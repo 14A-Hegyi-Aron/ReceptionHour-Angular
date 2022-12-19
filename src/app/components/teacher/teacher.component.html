@@ -1,0 +1,33 @@
+<h2>Tanárok</h2>
+
+<table>
+  <thead>
+    <tr>
+      <div class="text-center">
+        <button class="btn btn-outline-primary center" (click)="newTeacher()">
+          ➕
+        </button>
+      </div>
+      <th>Név</th>
+      <th>Szoba/terem</th>
+      <th>Kapacitás</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="status.newTeacher">
+      <div class="text-center">
+        <button class="btn btn-outline-success">✅</button>
+        <button class="btn btn-outline-danger" (click)="cancelNew()">❌</button>
+      </div>
+    </tr>
+    <tr *ngFor="let teacher of teachers">
+      <div class="text-center">
+        <button class="btn btn-outline-warning">✏️</button>
+        <button class="btn btn-outline-danger">🗑️</button>
+      </div>
+      <td>{{ teacher.name }}</td>
+      <td>{{ teacher.room }}</td>
+      <td>{{ teacher.capacity }}</td>
+    </tr>
+  </tbody>
+</table>
