@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent, TeacherComponent } from './components';
+import { HomeComponent, NewMeetingComponent, TeacherComponent } from './components';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'newmeeting',
+    component: NewMeetingComponent,
   },
   {
     path: 'admin',

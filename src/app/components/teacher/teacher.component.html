@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <div class="text-center">
+      <div class="text-center" *ngIf="!status.editedTeacher">
         <button class="btn btn-outline-primary center" (click)="newTeacher()">
           ➕
         </button>
@@ -15,19 +15,108 @@
   </thead>
   <tbody>
     <tr *ngIf="status.newTeacher">
-      <div class="text-center">
-        <button class="btn btn-outline-success">✅</button>
-        <button class="btn btn-outline-danger" (click)="cancelNew()">❌</button>
-      </div>
+      <td>
+        <div class="text-center">
+          <button class="btn btn-outline-success me-1" (click)="saveNew()">
+            ✅
+          </button>
+          <button class="btn btn-outline-danger" (click)="cancelNew()">
+            ❌
+          </button>
+        </div>
+      </td>
+      <td>
+        <input
+          title="name"
+          placeholder="Kiss Béla"
+          class="form-control"
+          type="text"
+          [(ngModel)]="status.newTeacher.name"
+        />
+      </td>
+      <td>
+        <input
+          title="room"
+          placeholder="fsz. 1"
+          class="form-control"
+          type="text"
+          [(ngModel)]="status.newTeacher.room"
+        />
+      </td>
+      <td>
+        <input
+          title="capacity"
+          placeholder="30"
+          class="form-control"
+          type="number"
+          [(ngModel)]="status.newTeacher.capacity"
+        />
+      </td>
     </tr>
     <tr *ngFor="let teacher of teachers">
-      <div class="text-center">
-        <button class="btn btn-outline-warning">✏️</button>
-        <button class="btn btn-outline-danger">🗑️</button>
-      </div>
-      <td>{{ teacher.name }}</td>
-      <td>{{ teacher.room }}</td>
-      <td>{{ teacher.capacity }}</td>
+      <td>
+        <div
+          *ngIf="!status.newTeacher && !status.editedTeacher"
+          class="text-center"
+        >
+          <button
+            class="btn btn-outline-warning me-1"
+            (click)="modify(teacher)"
+          >
+            ✏️
+          </button>
+          <button
+            class="btn btn-outline-danger"
+            (click)="delete(teacher)">🗑️</button>
+        </div>
+        <div
+          class="text-center"
+          *ngIf="status.editedTeacher?.id === teacher.id"
+        >
+          <button class="btn btn-outline-success me-1" (click)="saveModify()">
+            ✅
+          </button>
+          <button class="btn btn-outline-danger" (click)="cancelModify()">
+            ❌
+          </button>
+        </div>
+      </td>
+      <td *ngIf="status.editedTeacher?.id !== teacher.id">
+        {{ teacher.name }}
+      </td>
+      <td *ngIf="status.editedTeacher?.id !== teacher.id">
+        {{ teacher.room }}
+      </td>
+      <td *ngIf="status.editedTeacher?.id !== teacher.id">
+        {{ teacher.capacity }}
+      </td>
+      <td *ngIf="status.editedTeacher?.id === teacher.id && status.editedTeacher">
+        <input
+          title="name"
+          placeholder="Kiss Béla"
+          class="form-control"
+          type="text"
+          [(ngModel)]="status.editedTeacher.name"
+        />
+      </td>
+      <td *ngIf="status.editedTeacher?.id === teacher.id && status.editedTeacher">
+        <input
+          title="room"
+          placeholder="fsz. 1"
+          class="form-control"
+          type="text"
+          [(ngModel)]="status.editedTeacher.room"
+        />
+      </td>
+      <td *ngIf="status.editedTeacher?.id === teacher.id && status.editedTeacher">
+        <input
+          title="capacity"
+          placeholder="30"
+          class="form-control"
+          type="number"
+          [(ngModel)]="status.editedTeacher.capacity"
+        />
+      </td>
     </tr>
   </tbody>
 </table>

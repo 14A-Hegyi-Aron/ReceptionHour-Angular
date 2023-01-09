@@ -1,0 +1,12 @@
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+button {
+  margin-top: 1rem;
+}
+
+form div:nth-last-of-type(1) {
+  text-align: center;
+}

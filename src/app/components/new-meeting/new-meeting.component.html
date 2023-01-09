@@ -1,0 +1,22 @@
+<h2>Új időpont foglalása</h2>
+<form>
+  <div>
+    <label class="form-label">Tanár neve:</label>
+    <select class="form-select" title="Tanár" name="teacherId" [(ngModel)]="meeting.teacherId">
+      <option value="Kérem Válasszon"></option>
+      <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.name}}</option>
+    </select>
+    <label *ngIf="showErrors && !meeting.teacherId" class="text-danger">Kérem válassza ki a tanár nevét!</label>
+  </div>
+  <div>
+    <label class="form-label">Dátum:</label>
+    <input title="date" class="form-input" type="date" >
+    <label *ngIf="showErrors && !meeting.date" class="text-danger">Kérem adja meg a dátumot!</label>
+  </div>
+  <div>
+    <label class="form-label">Szülő neve:</label>
+    <input title="name" class="form-input" type="text" >
+    <label *ngIf="showErrors && !meeting.parentName" class="text-danger">Kérem adja meg a nevét!</label>
+  </div>
+  <button class="btn btn-success" (click)="save()">Rögzítés</button>
+</form>

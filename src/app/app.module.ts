@@ -9,12 +9,14 @@ import {
   HomeComponent,
   TeacherComponent
  } from './components';
+import { NewMeetingComponent } from './components/new-meeting/new-meeting.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TeacherComponent,
+    NewMeetingComponent,
   ],
   imports: [
     BrowserModule,
