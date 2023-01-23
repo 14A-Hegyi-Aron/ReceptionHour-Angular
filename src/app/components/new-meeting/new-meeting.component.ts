@@ -15,7 +15,7 @@ export class NewMeetingComponent implements OnInit {
   meeting: MeetingModel = {
     id: 0,
     teacher: null,
-    teacherId: '',
+    teacherId: null,
     date: '',
     parentName: '',
   };
@@ -47,7 +47,8 @@ export class NewMeetingComponent implements OnInit {
       this.meeting.date &&
       this.meeting.parentName
     ) {
-      this.showErrors = false;  
+      this.meeting.teacherId = Number(this.meeting.teacherId);
+      this.showErrors = false;
       this.meetingService.newMeeting(this.meeting).subscribe({
         next: () => {
           alert("Sikeres jelentkezés!");

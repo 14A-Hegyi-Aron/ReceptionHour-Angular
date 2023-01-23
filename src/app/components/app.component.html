@@ -32,10 +32,34 @@
             Admin
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/admin/teachers>">Tanárok</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/admin/teachers>">Tanárok</a>
+            </li>
           </ul>
         </li>
       </ul>
+      <div class="navbar-item" *ngIf="!authService.token">
+        <a class="nav-link" routerLink="login">Bejelentkezés</a>
+      </div>
+      <div class="navbar-item dropdown" *ngIf="authService.token">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          MyName
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li>
+            <a class="dropdown-item" (click)="authService.logout()"
+              >Kijelentkezés</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

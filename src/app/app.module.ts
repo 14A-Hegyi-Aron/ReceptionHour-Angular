@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   AppComponent,
   HomeComponent,
-  TeacherComponent
- } from './components';
-import { NewMeetingComponent } from './components/new-meeting/new-meeting.component';
+  TeacherComponent,
+  NewMeetingComponent,
+  LoginComponent,
+} from './components';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,10 @@ import { NewMeetingComponent } from './components/new-meeting/new-meeting.compon
     HomeComponent,
     TeacherComponent,
     NewMeetingComponent,
+    LoginComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

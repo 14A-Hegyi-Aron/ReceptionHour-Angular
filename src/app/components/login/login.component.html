@@ -1,0 +1,45 @@
+<h2>Bejelentkezés</h2>
+<form>
+  <div>
+    <label class="form-label">Felhasználó:</label>
+    <input
+      title="username"
+      class="form-input"
+      type="text"
+      [(ngModel)]="user.login"
+      name="username"
+    />
+    <label *ngIf="showErrors && !user.login" class="text-danger"
+      >Kérem adja meg a felhasználó azonosítóját!</label
+    >
+  </div>
+  <div>
+    <label class="form-label">Jelszó:</label>
+    <input
+      title="password"
+      class="form-input"
+      type="password"
+      [(ngModel)]="user.password"
+      name="password"
+    />
+    <label *ngIf="showErrors && !user.password" class="text-danger"
+      >Kérem adja meg a jelszót!</label
+    >
+  </div>
+  <div class="text-center mt-2">
+    <label
+      *ngIf="errorText"
+      class="alert alert-danger alert-dismissible fade show"
+      >{{ errorText }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </label>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-success" (click)="login()">Bejelentkezés</button>
+  </div>
+</form>
